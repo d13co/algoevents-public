@@ -1,0 +1,20 @@
+{
+  "name": "algoevents",
+  "version": "0.1.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "githubd13:d13co/algoevents-public.git"
+  },
+  "keywords": [],
+  "author": "Bit D13",
+  "license": "GPLv3",
+  "dependencies": {
+    "algosdk": "^2.2.0",
+    "lodash": "^4.17.21"
+  }
+}
