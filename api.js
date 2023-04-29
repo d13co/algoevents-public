@@ -235,6 +235,8 @@ class AlgoEvents {
   forceStop() {
     this.logger.log('Stopped at', this.lastRound);
     this._running = false;
+    if (!this.actions)
+      return;
     try {
       this.actions.save();
     } catch(e) {
