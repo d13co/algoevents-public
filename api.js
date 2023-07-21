@@ -18,7 +18,7 @@ class AlgoEvents {
     this.rules = rules;
     this.getRules = getRules;
     this.algod = algod;
-    this.logger = new Loggable('API');
+    this.logger = logger ?? new Loggable('API');
     this.onRound = onRound;
     this.threads = threads;
 
@@ -171,14 +171,14 @@ class AlgoEvents {
 
   async runThread(t) {
     this.logger.debug(`Thread ${t} starting`);
-    while(true) {
+    while(this._running) {
       const round = this.getNextRound();
       if (round === undefined) {
         this.logger.debug(`Thread ${t} stopping`);
         return;
       }
       const expoBackoff = new ExpoBackoff();
-      inner: while(true) {
+      inner: while(this._running) {
         try {
           await this.processBlock(round);
           this.logger.log(t, "processed", round);
